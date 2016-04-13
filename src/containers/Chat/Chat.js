@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import Emote from './Message/Emote';
+import Message from './Message/Message';
 
 @connect(
   state => ({user: state.auth.user})
@@ -61,7 +63,9 @@ export default class Chat extends Component {
         <div>
           <ul>
           {this.state.messages.map((msg) => {
-            return <li key={`chat.msg.${msg.id}`}>{msg.from}: {msg.text}</li>;
+            return (msg.text.indexOf('/me') === 0)
+              ? <Emote id={msg.id} from={msg.from} text={msg.text}/>
+              : <Message id={msg.id} from={msg.from} text={msg.text}/>;
           })}
           </ul>
           <form className="login-form" onSubmit={this.handleSubmit}>
