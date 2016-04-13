@@ -5,14 +5,14 @@ import { MiniInfoBar } from 'components';
 export default class About extends Component {
 
   state = {
-    showKitten: false
+    showPuppy: false
   }
 
-  handleToggleKitten = () => this.setState({showKitten: !this.state.showKitten});
+  handleToggleKitten = () => this.setState({showPuppy: !this.state.showPuppy});
 
   render() {
-    const {showKitten} = this.state;
-    const kitten = require('./kitten.jpg');
+    const {showPuppy} = this.state;
+    const henry = require('./henry.jpg');
     return (
       <div className="container">
         <h1>About Us</h1>
@@ -35,15 +35,15 @@ export default class About extends Component {
         <h3>Images</h3>
 
         <p>
-          Psst! Would you like to see a kitten?
+          Psst! Would you like to see a puppy?
 
-          <button className={'btn btn-' + (showKitten ? 'danger' : 'success')}
+          <button className={'btn btn-' + (showPuppy ? 'danger' : 'success')}
                   style={{marginLeft: 50}}
                   onClick={this.handleToggleKitten}>
-            {showKitten ? 'No! Take it away!' : 'Yes! Please!'}</button>
+            {showPuppy ? 'No! Take it away!' : 'Yes! Please!'}</button>
         </p>
 
-        {showKitten && <div><img src={kitten}/></div>}
+        {showPuppy && <div><img src={henry}/></div>}
       </div>
     );
   }
