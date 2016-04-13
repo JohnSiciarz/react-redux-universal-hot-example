@@ -39,7 +39,7 @@ describe('widget load', () => {
         ()=> {
         },
         (err)=> {
-          expect(err).to.equal('Widget load fails 33% of the time. You were unlucky.');
+          expect(err).to.equal('Widget load fails 25% of the time. You were unlucky.');
         });
     });
   });
