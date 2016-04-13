@@ -1,0 +1,1 @@
+export filterProfanity from './filterprofanity';

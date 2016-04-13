@@ -7,6 +7,7 @@ import {mapUrl} from 'utils/url.js';
 import PrettyError from 'pretty-error';
 import http from 'http';
 import SocketIo from 'socket.io';
+import * as textParsing from './textparsing/index';
 
 const pretty = new PrettyError();
 const app = express();
@@ -73,6 +74,7 @@ if (config.apiPort) {
         const msgNo = (messageIndex + index) % bufferSize;
         const msg = messageBuffer[msgNo];
         if (msg) {
+          msg.text = textParsing.filterProfanity(msg.text);
           socket.emit('msg', msg);
         }
       }
@@ -82,6 +84,7 @@ if (config.apiPort) {
       data.id = messageIndex;
       messageBuffer[messageIndex % bufferSize] = data;
       messageIndex++;
+      data.text = textParsing.filterProfanity(data.text);
       io.emit('msg', data);
     });
   });
