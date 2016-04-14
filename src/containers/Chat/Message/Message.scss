@@ -1,0 +1,87 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+@mixin box-shadow($x, $y, $blur, $spread, $colour) {
+  -moz-box-shadow: $x $y $blur $spread $colour;
+  -webkit-box-shadow: $x $y $blur $spread $colour;
+  box-shadow: $x $y $blur $spread $colour;
+}
+
+.message {
+  @include border-radius(4px);
+  @include box-shadow(0px, 0px, 5px, 2px, #e9e9e9);
+  clear: both;
+  list-style-type: none;
+  margin-top: 10px;
+  max-width: 100%;
+  min-width: 369px;
+  padding: 14px 18px;
+
+  .user {
+    font-weight: bolder;
+
+    .icon {
+      margin-right: 5px;
+    }
+  }
+
+  .text {
+    display: block;
+    font-size: 28px;
+    font-weight: 100;
+  }
+
+  @media (max-width: 768px) {
+    background-color: #FFFFFF;
+    width: 100%;
+
+    .user {
+      color: #000;
+
+      .icon {
+        color: #C8C8C8;
+      }
+    }
+
+    .text {
+      color: #808080;
+    }
+  }
+
+  @media (min-width: 768px) {
+    background-color: #61B9FF;
+    float: right;
+
+    .user {
+      color: #FFF;
+
+      .icon {
+        color: #FFF;
+      }
+    }
+
+    .text {
+      color: #FFF;
+    }
+
+    &.current {
+      background-color: #FFFFFF;
+      float: left;
+
+      .user {
+        color: #000;
+
+        .icon {
+          color: #C8C8C8;
+        }
+      }
+
+      .text {
+        color: #808080;
+      }
+    }
+  }
+}

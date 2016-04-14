@@ -1,13 +1,54 @@
 .chat {
+  background-color: #F2F2F2;
+  padding: 10px 0 60px;
+  position: relative;
+
+  ul {
+    overflow: hidden;
+    padding: 0;
+  }
+
   input {
     padding: 5px 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
   }
+
   form {
-    margin: 30px 0;
+    background-color: #E0E0E0;
+    border-top: 1px solid #CFCFCF;
+    bottom: 0;
+    height: 60px;
+    left: 0;
+    position: absolute;
+    right: 0; 
+
+    :global(.container) {
+      padding: 10px 132px 10px 15px;
+      position: relative;
+    }
+
+    input {
+      background-color: #F0F0F0;
+      border: 0 none;
+      color: #989898;
+      font-size: 18px;
+      height: 39px;
+      line-height: 39px;
+      margin-right: 100px;
+      padding: 0 15px;
+      width:100%;
+    }
+
     :global(.btn) {
+      background-color: #61B9FF; 
+      color: #FFF;
+      line-height: 39px;
       margin-left: 10px;
+      padding: 0 32px;
+      position: absolute;
+      right: 15px;
+      top: 11px;
     }
   }
 }

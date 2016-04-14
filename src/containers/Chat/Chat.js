@@ -56,29 +56,31 @@ export default class Chat extends Component {
     const {user} = this.props;
 
     return (
-      <div className={style.chat + ' container'}>
-        <h1 className={style}>Chat</h1>
-
-        {user &&
-        <div>
-          <ul>
-          {this.state.messages.map((msg) => {
-            return (msg.text.indexOf('/me') === 0)
-              ? <Emote id={msg.id} from={msg.from} text={msg.text}/>
-              : <Message id={msg.id} from={msg.from} text={msg.text}/>;
-          })}
-          </ul>
-          <form className="login-form" onSubmit={this.handleSubmit}>
-            <input type="text" ref="message" placeholder="Enter your message"
-             value={this.state.message}
-             onChange={(event) => {
-               this.setState({message: event.target.value});
-             }
-            }/>
-            <button className="btn" onClick={this.handleSubmit}>Send</button>
-          </form>
+      <div className={style.chat}>
+        <div className="container">
+          {user &&
+          <div>
+            <ul>
+            {this.state.messages.map((msg) => {
+              return (msg.text.indexOf('/me') === 0)
+                ? <Emote id={msg.id} from={msg.from} text={msg.text} currentUser={msg.from === user.name}/>
+                : <Message id={msg.id} from={msg.from} text={msg.text} currentUser={msg.from === user.name}/>;
+            })}
+            </ul>
+            <form className="login-form" onSubmit={this.handleSubmit}>
+              <div className="container">
+                <input type="text" ref="message" placeholder="Enter your message"
+                 value={this.state.message}
+                 onChange={(event) => {
+                   this.setState({message: event.target.value});
+                 }
+                }/>
+                <button className="btn" onClick={this.handleSubmit}>SEND</button>
+              </div>
+            </form>
+          </div>
+          }
         </div>
-        }
       </div>
     );
   }

@@ -9,12 +9,14 @@ export default class Emote extends Component {
   };
 
   render() {
+    const style = require('./Message.scss');
+
     const id = this.props.id;
     const from = this.props.from;
     const text = this.props.text.replace('/me', '');
 
     return (
-      <li key={`chat.msg.${id}`}>* {from} {text}</li>
+      <li key={`chat.msg.${id}`} className={style.message}>* {from} {text}</li>
     );
   }
 }
