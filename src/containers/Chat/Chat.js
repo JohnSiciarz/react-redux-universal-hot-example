@@ -63,8 +63,8 @@ export default class Chat extends Component {
             <ul>
             {this.state.messages.map((msg) => {
               return (msg.text.indexOf('/me') === 0)
-                ? <Emote id={msg.id} from={msg.from} text={msg.text} currentUser={msg.from === user.name}/>
-                : <Message id={msg.id} from={msg.from} text={msg.text} currentUser={msg.from === user.name}/>;
+                ? <Emote key={`chat.msg.${msg.id}`} from={msg.from} text={msg.text} currentUser={msg.from === user.name}/>
+                : <Message key={`chat.msg.${msg.id}`} from={msg.from} text={msg.text} currentUser={msg.from === user.name}/>;
             })}
             </ul>
             <form className="login-form" onSubmit={this.handleSubmit}>
