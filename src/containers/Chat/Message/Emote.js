@@ -16,7 +16,9 @@ export default class Emote extends Component {
     const text = this.props.text.replace('/me', '');
 
     return (
-      <li key={`chat.msg.${id}`} className={style.message}>* {from} {text}</li>
+      <li key={`chat.msg.${id}`} className={style.message}>
+        <span className={style.text}>* {from} {text}</span>
+      </li>
     );
   }
 }
